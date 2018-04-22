@@ -1,0 +1,6 @@
+msgid "Accounting"
+msgstr "Accounting"
+
+msgid "Journals"
+msgstr "Journals"
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+ {%include 'header.html' %}
+<title>{{ _('New Sale Order Details') }}</title>
+</head>
+<body>
+{%include 'navbar.html' %}
+<div class="container">
+ <h3>{{ _('New Sale Order Details') }}</h3>
+ <hr />
+<div class="form-group">
+<form action="#" method="post" class="form-horizontal" id="saleOrderDetailsForm">
+<div class="form-group">
+<label for="price" class="col-sm-2 control-label">{{ _('Price') }}:</label>
+<div class="col-sm-4">
+<input type="text" class="form-control" name="price" id="price" data-msg-required="The price field is required" required>
+</div>
+</div>
+<div class="form-group">
+<label for="quantity" class="col-sm-2 control-label">{{ _('Quantity') }}:</label>
+<div class="col-sm-4">
+<input type="text" class="form-control" name="quantity" id="quantity" data-msg-required="The quantity field is required" required>
+</div>
+</div>
+<div class="form-group">
+<label for="item" class="col-sm-2 control-label">{{ _('Item') }}:</label>
+<div class="col-sm-4">
+<select name="item" class="form-control">	
+    {% for i in items %}
+	<option value={{ i.id }}>{{ i.item }}</option>
+	{% endfor %}
+</select>
+</div>
+</div>
+<div class="form-group">
+<label for="tax" class="col-sm-2 control-label">{{ _('Tax') }}:</label>
+<div class="col-sm-4">
+<select name="tax" class="form-control">	
+    {% for t in taxes %}
+	<option value={{ t.id }}>{{ t.tax }}</option>
+	{% endfor %}
+</select>
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-4">
+<a class="btn btn-default" role="button"  href="{{url_for('displaySaleOrderDetails' , so_id=so_id)}}">
+<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+  {{ _('Cancel') }}
+</a>
+<button type="submit" class="btn btn-default">
+<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+  {{ _('Submit') }}
+</button>
+</div>
+</div>
+</form>
+{%include 'footer.html' %}
+</body>
+</html>

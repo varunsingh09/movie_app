@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+{%include 'header.html' %}
+<title>Edit Rate</title>
+</head>
+<body>
+{%include 'navbar.html' %}
+<div class="container">
+ <h3>Edit Rate</h3>
+ <hr />
+ <div class="form-group">
+<form action="#" method="post" class="form-horizontal">
+<div class="form-group">
+<label for="rate" class="col-sm-2 control-label">Rate:</label>
+<div class="col-sm-4">
+<input type="text" class="form-control" name="rate" id="rate" value="{{rate.rate}}">
+</div>
+</div>
+<div class="form-group">
+<label for="currency_from" class="col-sm-2 control-label">Currency from:</label>
+<div class="col-sm-4">
+<input type="text" class="form-control" name="currency_from" id="currency_from" value="{{rate.currency_from}}">
+</div>
+</div>
+<div class="form-group">
+<label for="currency_to" class="col-sm-2 control-label">Currency to:</label>
+<div class="col-sm-4">
+<input type="text" class="form-control" name="currency_to" id="currency_to" value="{{rate.currency_to}}">
+</div>
+</div>
+<div class="form-group">
+<label for="start_date" class="col-sm-2 control-label">Start date:</label>
+<div class="col-sm-4">
+<input type="text" class="form-control" name="start_date" id="start_date" value="{{rate.start_date}}">
+</div>
+</div>
+<div class="form-group">
+<label for="end_date" class="col-sm-2 control-label">End date:</label>
+<div class="col-sm-4">
+<input type="text" class="form-control" name="end_date" id="end_date" value="{{rate.end_date}}">
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-4">
+<a class="btn btn-default" role="button"  href="{{url_for('displayRates')}}">
+<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+  Cancel
+</a>
+<button type="submit" class="btn btn-default">
+<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+  Submit
+</button>
+</div>
+</div>
+</form>
+{%include 'footer.html' %}
+</body>
+</html>
+</html>

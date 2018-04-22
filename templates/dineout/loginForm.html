@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+ <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap-theme.css') }}">
+<title>CBA - Login</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+            Cloud Business Applications
+        </a>
+    </div>{% if message %}<font color="red">{{message}} </font>{% endif %}
+<!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">    
+      <ul class="nav navbar-nav navbar-right">
+        <form class="navbar-form navbar-right" role="login" method="post" action="#" >
+        <div class="form-group">
+          <input type="text" class="form-control" name="login" placeholder="Login">
+          <input type="password" class="form-control" name="secret" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+ <div class="container">
+         <div class="jumbotron">
+        <h1>Cloud Business Applications</h1>
+        <p>You can start testing the application by simply using 'test' as user witn pasword '123456'</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="https://panoplytechnology.wordpress.com" role="button">Feedback &raquo;</a>
+        </p>
+ </div>
+ <script src="{{ url_for('static', filename='js/jquery-1.11.2.min.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+</body>
+</html>

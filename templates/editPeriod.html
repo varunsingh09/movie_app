@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+{%include 'header.html' %}
+<title>{{ _('Edit Period') }}</title>
+</head>
+<body>
+{%include 'navbar.html' %}
+<div class="container">
+ <h3>{{ _('Edit Period') }}</h3>
+ <hr />
+ <br />
+<div class="form-group">
+<form action="#" method="post" class="form-horizontal" id="periodForm">
+<div class="form-group">
+<label for="name" class="col-sm-2 control-label">{{ _('Period') }}:</label>
+<div class="col-sm-4">
+<input type="text" class="form-control" name="period" id="period" value="{{period.period}}" data-msg-required="The period field is required" required>
+</div>
+</div>
+<div class="form-group">
+<label for="period_start" class="col-sm-2 control-label">{{ _('Start date') }}:</label>
+<div class="col-sm-4">
+<input type="text" class="form-control" name="period_start" id="start_date" value="{{period.period_start}}" data-msg-required="The start date field is required" required>
+</div>
+</div>
+<div class="form-group">
+<label for="period_end" class="col-sm-2 control-label">End date:</label>
+<div class="col-sm-4">
+<input type="text" class="form-control" name="period_end" id="period_end" value="{{period.period_end}}" data-msg-required="The end date field is required" required>
+</div>
+</div>
+<div class="form-group">
+<label for="status" class="col-sm-2 control-label">Status:</label>
+<div class="col-sm-4">
+{% if period.status == 'O' %}
+<input type="radio"  name="status" value="O" checked>Open</br>
+{%else%}
+<input type="radio"  name="status" value="O">Open</br>
+{% endif %}
+{% if period.status == 'C' %}
+<input type="radio"  name="status" value="C" checked>Closed</br>
+{%else%}
+<input type="radio"  name="status" value="C">Closed</br>
+{% endif %}
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-4">
+<a class="btn btn-default" role="button"   href="{{url_for('displayPeriods' , calendar_id=calendar_id)}}">
+<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+  Cancel
+</a>
+<button type="submit" class="btn btn-default">
+<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+  Submit
+</button>
+</div>
+</div>
+</form>
+{%include 'footer.html' %}
+</body>
+</html>

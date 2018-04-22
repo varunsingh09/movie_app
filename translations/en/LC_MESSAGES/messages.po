@@ -1,0 +1,11 @@
+msgid "Accounting"
+msgstr "Accounting"
+
+msgid "Journals"
+msgstr "Journals"
+
+msgid "List Groups"
+msgstr "Lista de Grupos"
+
+msgid "List Contacts"
+msgstr "Lista de Contactos"

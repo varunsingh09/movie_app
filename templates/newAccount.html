@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+{%include 'header.html' %}
+<title>{{ _('New Account') }}</title>
+</head>
+<body>
+{%include 'navbar.html' %}
+<div class="container">
+ <h3>{{ _('New Account') }}</h3>
+ <hr />
+<div class="form-group">
+<form action="#" method="post" class="form-horizontal" id="accountForm">
+<div class="form-group">
+<label for="code" class="col-sm-2 control-label">{{ _('Code') }}:</label>
+<div class="col-sm-4">
+<input type="text" class="form-control" name="code" id="code" data-msg-required="The code field is required" required>
+</div>
+</div>
+<div class="form-group">
+<label for="account" class="col-sm-2 control-label">{{ _('Account') }}:</label>
+<div class="col-sm-4">
+<input type="text" class="form-control" name="account" id="account" data-msg-required="The account field is required" required>
+</div>
+</div>
+<div class="form-group">
+<label for="type" class="col-sm-2 control-label">{{ _('Type') }}:</label>
+<div class="col-sm-4">
+<input type="radio"  name="type" value="BS" checked>{{ _('Balance Sheet') }}</br>
+<input type="radio"  name="type" value="IS">{{ _('Income Statement') }}</br>
+</div>
+</div>
+<div class="form-group">
+<label for="status" class="col-sm-2 control-label">{{ _('Status') }}:</label>
+<div class="col-sm-4">
+<input type="radio"  name="status" value="1" checked>{{ _('Enabled') }}</br>
+<input type="radio"  name="status" value="0">{{ _('Disbaled') }}</br>
+</div>
+</div>
+<div class="form-group">
+<label for="budgeting" class="col-sm-2 control-label">{{ _('Budgeting') }}:</label>
+<div class="col-sm-4">
+<input type="radio"  name="budgeting" value="1" checked>{{ _('Enabled') }}</br>
+<input type="radio"  name="budgeting" value="0">{{ _('Disbaled') }}</br>
+</div>
+</div>
+<div class="form-group">
+<label for="posting" class="col-sm-2 control-label" >{{ _('Posting') }}:</label>
+<div class="col-sm-4">
+<input type="radio"  name="posting" value="1" checked>{{ _('Enabled') }}</br>
+<input type="radio"  name="posting" value="0">{{ _('Disbaled') }}</br>
+</div>
+</div>
+<div class="form-group">
+<label for="level" class="col-sm-2 control-label">{{ _('Level') }}:</label>
+<div class="col-sm-4">
+<select name="level" class="form-control">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+  <option value="16">16</option>
+  <option value="17">17</option>
+  <option value="18">18</option>
+  <option value="19">19</option>
+  <option value="20">20</option>
+</select>
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-4">
+<a class="btn btn-default" role="button"  href="{{url_for('displayAccounts' , chart_id=chart_id)}}">
+<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+  {{ _('Cancel') }}
+</a>
+<button type="submit" class="btn btn-default">
+<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+  {{ _('Submit') }}
+</button>
+</div>
+</div>
+</form>
+{%include 'footer.html' %}
+</body>
+</html>

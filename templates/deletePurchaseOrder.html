@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+{%include 'header.html' %}
+<title>{{ _('Delete Purchase Order') }}</title>
+</head>
+<body>
+{%include 'navbar.html' %}
+<div class="container">
+<h3>{{ _('Delete Purchase Order') }}</h3>
+<hr />
+<br />
+<form action="#" method="post" class="form-inline">
+<div class="well well-sm">
+{{ _('Are you sure you want to delete') }} <i>{{po.memo}}</i>?
+<div>
+<br /><br />
+<a class="btn btn-default" role="button"  href="{{url_for('displayPurchaseOrders')}}">
+<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+ {{ _('Cancel') }}
+</a>
+<button type="submit" class="btn btn-default">
+<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+ {{ _('Confirm') }}
+</button>
+</div>
+</form>
+{%include 'footer.html' %}
+</body>
+</html>

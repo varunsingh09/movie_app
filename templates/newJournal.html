@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+{%include 'header.html' %}
+<title>{{ _('New Journal') }}</title>
+</head>
+<body>
+{%include 'navbar.html' %}
+<div class="container">
+<h3>{{ _('New Journal') }}</h3>
+<hr />
+<form action="#" method="post" class="form-horizontal" id="journalForm">
+<div class="form-group">
+<label for="memo" class="col-sm-2 control-label">{{ _('Memo') }}:</label>
+<div class="col-sm-4">
+<input type="text" class="form-control" name="memo" id="memo" data-msg-required="The memo field is required" required>
+</div>
+</div>
+<div class="form-group">
+<label for="entity" class="col-sm-2 control-label" >{{ _('Entity') }}:</label>
+<div class="col-sm-4">
+<select name="entity" class="form-control">
+	{% for e in entities %}
+	<option value={{ e.id }}>{{ e.entity }}</option>
+	{% endfor %}
+</select>	
+</div>
+</div>
+<div class="form-group">
+<label for="period" class="col-sm-2 control-label">{{ _('Period') }}:</label>
+<div class="col-sm-4">
+<select name="period" class="form-control">	
+    {% for p in periods %}
+	<option value={{ p.id }}>{{ p.period }}</option>
+	{% endfor %}
+</select>	
+</div>
+</div>
+<div class="form-group">
+<label for="currency" class="col-sm-2 control-label" >{{ _('Currency') }}:</label>
+<div class="col-sm-4">
+<select name="currency" class="form-control">
+	{% for c in currencies %}
+	<option value={{ c.id }}>{{ c.code }}</option>
+	{% endfor %}
+</select>	
+</div>
+</div>
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-4">
+<a class="btn btn-default" role="button"  href="{{url_for('displayJournals')}}">
+<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+  {{ _('Cancel') }}
+</a>
+<button type="submit" class="btn btn-default">
+<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+  {{ _('Submit') }}
+</button>
+</div>
+</div>
+</form>
+{%include 'footer.html' %}
+</body>
+</html>
