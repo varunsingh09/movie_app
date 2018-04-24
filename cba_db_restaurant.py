@@ -21,7 +21,7 @@ class RestaurantList(Base):
     city_id = Column(String(80), nullable=False)
     #area_name = Column(String(80), nullable=False)
     area_id = Column(String(80), nullable=False)
-    #locality_name = Column(String(80), nullable=False)
+    locality_name = Column(String(80), nullable=False)
     locality_id = Column(String(80), nullable=False)
     #state_name = Column(String(80), nullable=False)
     status =  Column(String(80), nullable=True)
@@ -150,6 +150,9 @@ class BookingList(Base):
     tbl_alloc_status=Column(String(30), nullable=True)
     bill_amount=Column(Integer , nullable=True)
     cnt_covers = Column(Integer , nullable=True)
+    offer_id= Column(Integer , nullable=True)
+    cnt_covers_males= Column(Integer , nullable=True)
+    restaurant_id= Column(Integer , nullable=True)
 
     
     @property
@@ -167,6 +170,9 @@ class BookingList(Base):
             'tbl_alloc_status' : self.tbl_alloc_status,
             'bill_amount' : self.bill_amount,
             'cnt_covers' : self.cnt_covers,
+            'offer_id' : self.offer_id,
+            'cnt_covers_males' : self.cnt_covers_males,
+            'restaurant_id' : self.restaurant_id,
     }
 
 class DinerList(Base):
@@ -199,8 +205,60 @@ class DinerList(Base):
             'd_password'  : self.d_password,
             'is_do_plus_member'  : self.is_do_plus_member,
     }
+
+class OrderList(Base):
+    __tablename__ = 'order_master'
+    __table_args__ = {'mysql_engine': 'InnoDB'}
+
+    id = Column(Integer, primary_key=True)
+    diner_id = Column(String(30), nullable=False)
+    obj_id = Column(String(30), nullable=False)
+    paid_status = Column(Integer, nullable=False)
+    promocode = Column(String(30), nullable=False)
+    amount = Column(Integer , nullable=False)
+    gst_number = Column(String(20), nullable=False)
+    created_on = Column(Date ,default=datetime.datetime.now)
+    
+    @property
+    def serialize(self):
+        """Return object data in easily serializeable format"""
+        return {
+            'id': self.id,
+            'diner_id' : self.diner_id,
+            'obj_id' : self.obj_id,
+            'paid_status'  : self.paid_status,
+            'promocode'      : self.promocode,
+            'amount'      : self.amount,
+            'gst_number'  : self.gst_number,
+            'created_on'  : self.created_on,
+    }
+
+class OfferList(Base):
+    __tablename__ = 'offer_master'
+    __table_args__ = {'mysql_engine': 'InnoDB'}
+
+    offer_id = Column(Integer, primary_key=True)
+    title = Column(String(30), nullable=False)
+    restaurant_id = Column(Integer, nullable=False)
+    is_active = Column(Integer, nullable=False)
+    st_dt = Column(Date ,default=datetime.datetime.now)
+    en_dt = Column(Date ,default=datetime.datetime.now)
+    
+    @property
+    def serialize(self):
+        """Return object data in easily serializeable format"""
+        return {
+            'offer_id': self.offer_id,
+            'title' : self.title,
+            'restaurant_id' : self.restaurant_id,
+            'is_active'  : self.is_active,
+            'st_dt'  : self.st_dt,
+            'en_dt'  : self.en_dt,
+    }
+
 #engine = create_engine('sqlite :///cba.db')
 
-engine = create_engine('mysql://root@127.0.0.1:3306/cba')      
+#engine = create_engine('mysql://root@127.0.0.1:3306/cba')      
+engine = create_engine('mysql://DineOutStg:Dine0utStg@35.154.78.220/shokuji_tc')      
 
 Base.metadata.create_all(engine)

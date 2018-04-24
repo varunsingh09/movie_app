@@ -19,36 +19,15 @@
                  <li><a href="{{ url_for('home') }}">{{ _('Budgets') }}</a></li>
               </ul>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ _('Procurment') }} <span class="caret"></span></a>
-               <ul class="dropdown-menu" role="menu">
-                 <li><a href="{{ url_for('home') }}">{{ _('Request For Quotes') }}</a></li>
-                 <li><a href="{{ url_for('home') }}">{{ _('Purchase Orders') }}</a></li>
-                 <li><a href="{{ url_for('home') }}">{{ _('Goods Receipts') }}</a></li>
-                 <li><a href="{{ url_for('home') }}">{{ _('Bills') }}</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ _('Sales') }} <span class="caret"></span></a>
-               <ul class="dropdown-menu" role="menu">
-                 <li><a href="{{ url_for('home') }}">{{ _('Quotes') }}</a></li>
-                 <li><a href="{{ url_for('home') }}">{{ _('Sale Orders') }}</a></li>
-                 <li><a href="{{ url_for('home') }}">{{ _('Shippings') }}</a></li>
-                 <li><a href="{{ url_for('home') }}">{{ _('Invoices') }}</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ _('Inventory') }} <span class="caret"></span></a>
-               <ul class="dropdown-menu" role="menu">
-                 <li><a href="{{ url_for('home') }}">{{ _('Items') }}</a></li>
-              </ul>
-            </li>
+      
+       
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ _('Dineout') }} <span class="caret"></span></a>
                <ul class="dropdown-menu" role="menu">
                  <li><a href="{{ url_for('displayRestaurant') }}">{{ _('Restaurant List') }}</a></li>
                  <li><a href="{{ url_for('displayBookings') }}">{{ _('Bookings List') }}</a></li>
                  <li><a href="{{ url_for('displayDiners') }}">{{ _('Diner List') }}</a></li>
+                 <li><a href="{{ url_for('orderHistory') }}">{{ _('Order List') }}</a></li>
               </ul>
             </li>
 

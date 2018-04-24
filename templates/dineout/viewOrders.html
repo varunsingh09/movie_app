@@ -2,7 +2,7 @@
 <html>
 <head>
 {%include 'header.html' %}
-<title>{{ _('Booking List') }}</title>
+<title>{{ _('Order List') }}</title>
 </head>
 <body>
  {%include 'navbar_dineout.html' %}
@@ -20,12 +20,12 @@
 {% endif %}
 {% endwith %}
 <div class="panel panel-default">
-<div class="panel-heading">{{ _('Booking List') }}</div>
+<div class="panel-heading">{{ _('Order List') }}</div>
 <div class="panel-body">
 <p class="text-right"> 
-<a class="btn btn-primary" role="button"  href="{{url_for('newBooking')}}" >
+<a class="btn btn-primary" role="button"  href="{{url_for('newDiner')}}" >
 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
- {{ _('Create Booking') }}
+ {{ _('Add New') }}
  </a>
 </p>
 </div>
@@ -35,15 +35,18 @@
  <tr>
    <th></th>
    <th></th>
+   <th>{{ _('Order Id') }}</th>
+   <th>{{ _('Diner Id') }}</th>
    <th>{{ _('Booking Id') }}</th>
-   <th>{{ _('Diner Information') }}</th>
-   <th>{{ _('Booking Information') }}</th>
-   <th>{{ _('Dining Time') }}</th>
-   <th>{{ _('Billing') }}</th>
+   <th>{{ _('Paid Status') }}</th>
+   <th>{{ _('Promo Code') }}</th>
+   <th>{{ _('Amount') }}</th>
+   <th>{{ _('GST No') }}</th>
+   <th>{{ _('Created Date') }}</th>
  </tr>
 </thead>
 <tbody>
-{% for i in booking_list %}
+{% for i in order_list %}
 <tr>
     <td>
       <a class="btn btn-link" href="{{url_for('editRestaurant' , r_id = 1)}}" >
@@ -55,15 +58,14 @@
        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
      </a>
    </td>
-   <td>{{i.disp_id}}</td>
-   <td>{{i.diner_name}}<br>{{i.diner_phone}}<br>{{i.diner_email}}</td>
-   <td>{{i.booking_status}} <br>Count Covers : {{i.cnt_covers}}</td>
-   <td>{{i.dining_dt_time}}</td>
-   <td >
-      <a class="btn btn-link">
-        <span  aria-hidden="true">{{i.bill_amount}}</span>
-      </a>
-   </td>   
+   <td>{{i.id}}</td>
+   <td>{{i.diner_id}}</td>
+   <td>{{i.obj_id}}</td>
+   <td>{{i.paid_status }}</td>
+   <td>{{i.promocode }}</td>
+   <td>{{i.amount }}</td>
+   <td>{{i.gst_number }}</td>
+   <td>{{i.created_on }}</td>
   </tr>
 {% endfor %}
 </tbody>

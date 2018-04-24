@@ -12,8 +12,9 @@ from sqlalchemy.orm.exc import NoResultFound
 from werkzeug.utils import secure_filename
 
 
+
 #from cba_db import (RestaurantList)
-from cba_db_restaurant import (RestaurantList,City,Locality,Area,BookingList,DinerList)
+from cba_db_restaurant import (RestaurantList,City,Locality,Area,BookingList,DinerList,OrderList,OfferList)
 from json import dumps
 
 
@@ -21,6 +22,7 @@ UPLOAD_FOLDER = '/home/varun/code/python/cba_python_mysql'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
+
 #app.config.from_pyfile('cba_babel.cfg')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 babel = Babel(app , default_locale='en', default_timezone='UTC', date_formats=None, configure_jinja=True)
@@ -73,7 +75,7 @@ def logout():
 #Users home page
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    return render_template('home_dineout.html')
 
 #Add a new restaurant
 @app.route('/adminstration/structure/new_restaurant/', methods=['GET', 'POST'])
@@ -188,6 +190,15 @@ def getLocality():
             '/dineout/select_box_locality.html', city_list=areaList)
 
 
+#Get Restaurant
+@app.route('/adminstration/structure/get_restaurant', methods=['GET', 'POST'])
+def getRestaurant():
+    if request.method == 'POST':
+        city_id= request.form['city_id']
+        restaurantList = db_session.query(RestaurantList).filter_by(city_id = city_id).filter_by(status = 1).all()
+        return render_template(
+            '/dineout/select_box_restaurant.html', restaurant_list=restaurantList)
+
 
 
 #Display bookings
@@ -230,7 +241,60 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
+#Diner History
+@app.route('/adminstration/structure/diner_history')
+def dinerHistory():
+    dinerList= db_session.query(DinerList).filter_by(is_do_plus_member=1).order_by(DinerList.d_id.desc()).limit(2000).all()
+    return render_template('/dineout/viewDiners.html',diner_list=dinerList)
+   
+#Order History
+@app.route('/adminstration/structure/order_history')
+def orderHistory():
+    orderList= db_session.query(OrderList).order_by(OrderList.id.desc()).limit(2000).all()
+    return render_template('/dineout/viewOrders.html',order_list=orderList)
+   
+
+#Add a new booking
+@app.route('/adminstration/structure/new_booking/', methods=['GET', 'POST'])
+def newBooking():
+    city = db_session.query(City).filter_by(status=1).order_by(City.name).all()
+    if request.method == 'POST':
+        newBooking = BookingList(diner_phone=request.form['diner_phone'], 
+            diner_name=request.form['diner_name'], 
+            diner_email=request.form['diner_email'],
+            restaurant_id=request.form['restaurant_id'],
+            offer_id=request.form['offer_id'],
+            cnt_covers_males=request.form['male'],
+            booking_status='NW',
+            cnt_covers=request.form['female']+request.form['male']
+           )
+
+        db_session.add(newBooking)
+        db_session.commit()
+        flash(gettext("item restaurant created with success"))
+        return redirect(url_for('displayBookings'))
+    else:
+        return render_template('/dineout/newBooking.html' ,city=city)
+
+#Offer List
+@app.route('/adminstration/structure/get_offer', methods=['GET', 'POST'])
+def getOffer():
+    if request.method == 'POST':
+        restaurant_id= request.form['restaurant_id']
+        offerList = db_session.query(OfferList).filter_by(restaurant_id = restaurant_id).filter_by(is_active = 1).all()
+        return render_template(
+            '/dineout/select_box.html', offer_list=offerList,display=1)
+
+#Check Diner Phone No
+@app.route('/adminstration/structure/get_diner_exist', methods=['GET', 'POST'])
+def getDinerExist():
+    if request.method == 'POST':
+        d_phone= request.form['diner_phone']
+        dinerList = db_session.query(DinerList).filter_by(d_phone = d_phone).filter_by(is_verified = 1).all()
+        return jsonify([i.serialize for i in dinerList])
+
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
     app.debug = True
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=8000)
