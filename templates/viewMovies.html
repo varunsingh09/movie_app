@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+{%include 'header.html' %}
+<title>{{ _('Movies List') }}</title>
+</head>
+<body>
+ {%include 'navbar.html' %}
+<div class="container">
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+{% for message in messages %}
+<div class="alert alert-success" role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+ {{message}}
+</div>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<div class="panel panel-default">
+<div class="panel-heading">{{ _('Movies List') }}</div>
+<div class="panel-body">
+<p class="text-right"> 
+<a class="btn btn-primary" role="button"  href="{{url_for('newRestaurant')}}" >
+<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+ {{ _('Add New') }}
+ </a>
+</p>
+</div>
+<div class="table-responsive">
+<table class="table table-striped table-bordered" cellspacing="0" width="100%" id="item_category">
+<thead>
+ <tr>
+   <th>{{ _('Movie ID') }}</th>
+   <th>{{ _('Movie Title') }}</th>
+   <th>{{ _('Movie Desc') }}</th>
+   <th>{{ _('Movie Release Date') }}</th>
+   <th>{{ _('Movie Runtime') }}</th>
+   <th>{{ _('Movie Certificate') }}</th>
+   <th>{{ _('Movie Rating') }}</th>
+ </tr>
+</thead>
+<tbody>
+{% for i in movies_list %}
+<tr>
+
+   <td>{{i.movieID}}</td>
+   <td>{{i.movieTitle}}</td>
+   <td>{{i.movieDesc}}</td>
+   <td>{{i.movieReleaseDate}}</td>
+   <td>{{i.movieRuntime}}</td>
+   <td>{{i.movieCertificate}}</td>
+   <td>{{i.movieRating}}</td>  
+  </tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+{%include 'footer.html' %}
+</body>
+</html>

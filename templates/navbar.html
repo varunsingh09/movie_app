@@ -11,58 +11,14 @@
          </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li ><a href="{{ url_for('home') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>      
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ _('Accounting') }} <span class="caret"></span></a>
+             <li class="dropdown">
                <ul class="dropdown-menu" role="menu">
-                 <li><a href="{{ url_for('displayJournals') }}">{{ _('Journals') }}</a></li>
-                 <li><a href="{{ url_for('displayBudgets') }}">{{ _('Budgets') }}</a></li>
+                 <li><a href="{{ url_for('displayMovies') }}">{{ _('Movies List') }}</a></li>
               </ul>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ _('Procurment') }} <span class="caret"></span></a>
-               <ul class="dropdown-menu" role="menu">
-                 <li><a href="{{ url_for('displayRequestForQuotes') }}">{{ _('Request For Quotes') }}</a></li>
-                 <li><a href="{{ url_for('displayPurchaseOrders') }}">{{ _('Purchase Orders') }}</a></li>
-                 <li><a href="{{ url_for('displayGoodsReceipts') }}">{{ _('Goods Receipts') }}</a></li>
-                 <li><a href="{{ url_for('displayBills') }}">{{ _('Bills') }}</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ _('Sales') }} <span class="caret"></span></a>
-               <ul class="dropdown-menu" role="menu">
-                 <li><a href="{{ url_for('displayQuotes') }}">{{ _('Quotes') }}</a></li>
-                 <li><a href="{{ url_for('displaySaleOrders') }}">{{ _('Sale Orders') }}</a></li>
-                 <li><a href="{{ url_for('displayShippings') }}">{{ _('Shippings') }}</a></li>
-                 <li><a href="{{ url_for('displayInvoices') }}">{{ _('Invoices') }}</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ _('Inventory') }} <span class="caret"></span></a>
-               <ul class="dropdown-menu" role="menu">
-                 <li><a href="{{ url_for('displayItemCategories') }}">{{ _('Items') }}</a></li>
-              </ul>
-            </li>
-            
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ _('Set Up') }} <span class="caret"></span></a>
-               <ul class="dropdown-menu" role="menu">
-                 <li><a href="{{ url_for('displayLocations') }}">{{ _('Locations') }}</a></li>
-                 <li><a href="{{ url_for('displayBanks') }}">{{ _('Banks') }}</a></li>
-                 <li><a href="{{ url_for('displayChartsOfAccounts') }}">{{ _('Charts') }}</a></li>
-                 <li><a href="{{ url_for('displayCalendars') }}">{{ _('Calendars') }}</a></li>
-                 <li><a href="{{ url_for('displayBusinessPartners') }}">{{ _('Business Partners') }}</a></li>
-                 <li><a href="{{ url_for('displayLegalEntities') }}">{{ _('Legal Entities') }}</a></li>                
-                 <li><a href="{{ url_for('displayTaxes') }}">{{ _('Taxes') }}</a></li>
-                 <li><a href="{{ url_for('displayCurrencies') }}">{{ _('Currencies') }}</a></li>
-                 <li><a href="{{ url_for('displayRates') }}">{{ _('Rates') }}</a></li>
-              </ul>
-            </li>
+
            </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">{{ session['login'] }}</a></li>
-            <li><a href="{{ url_for('logout') }}"> <span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
-          </ul>
+
         </div>
       </div>
     </nav>
