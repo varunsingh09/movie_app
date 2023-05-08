@@ -1,4 +1,4 @@
-# movie_app # movie_app
+# movie_app # movie_app;
 
 Create database cba;
 After execute cba.sql which is in sql/cba.sql
